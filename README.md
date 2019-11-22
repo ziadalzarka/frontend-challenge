@@ -20,7 +20,7 @@ Please stick to the style rules and make sure your code is readable and pretty â
 
 ### Requirements
 
-- [ ] Implement a login form that consumes this endpoint through a POST request `https://pushbots-fend-challenge.herokuapp.com/login` with the following credentials â€“ email: `frontend@ninja.com` and password: `12345` which should look like: 
+- [ ] Implement a login form that consumes this endpoint through a POST request `https://pushbots-fend-challenge.herokuapp.com/login` with the following credentials â€“ email: `frontend@ninja.com` and password: `12345` as JSON data, the response should look like: 
 
 ```js
 {
@@ -39,7 +39,7 @@ Please stick to the style rules and make sure your code is readable and pretty â
 - [ ] Make sure to handle the errors and show them to the user.
 - [ ] Redirect the user to the main dashboard after login and make sure to display the user data you got from the login request.  
 - [ ] User should see a top app bar that shows those info name, avatar and plan.
-- [ ] Our endpoints are secured with JWT, to get access to the data you'll need to set the `Authorization` header in your requests to `Bearer {{token}}`, you'll replace `{{token}}` with the actual token you got from login request.
+- [ ] The following endpoints are secured with JWT, to get access to the data you'll need to set the `Authorization` header in your requests to `Bearer {{token}}`, you'll replace `{{token}}` with the actual token you got from login request.
 - [ ] Store the Authorization token as a cookie or in local storage and use it re-authenticate the user instead of re-logging in. To authenticate a token you can use this endpoint `https://pushbots-fend-challenge.herokuapp.com/api/me` with a GET request and set the token in the `Authorization` header as said above. you'll get the user object as a response from this endpoint like so:
 ```js
 {
@@ -52,7 +52,7 @@ Please stick to the style rules and make sure your code is readable and pretty â
   "totalDevices": 3920
 }
 ```
-- [ ] User should see a list of Apps that you'll get via this endpoint GET `https://pushbots-fend-challenge.herokuapp.com/api/apps?take=5&skip=5&sortBy=name&direction=desc`. The response should include list of apps, each app should look like this: 
+- [ ] User should see a list of Apps that you'll get via this endpoint GET `https://pushbots-fend-challenge.herokuapp.com/apps?take=5&skip=5&sortBy=name&direction=desc`. The response should include list of apps, each app should look like this: 
 
 ```js
 {
