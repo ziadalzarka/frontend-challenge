@@ -20,18 +20,84 @@ Please stick to the style rules and make sure your code is readable and pretty â
 
 ### Requirements
 
-- [ ] Implement a login form that consumes this endpoint `https://pushbots-fend-challenge.herokuapp.com/login`.
+- [ ] Implement a login form that consumes this endpoint through a POST request `https://pushbots-fend-challenge.herokuapp.com/login` with the following credentials â€“ email: `frontend@ninja.com` and password: `12345` which should look like: 
+
+```js
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMmVkMjBkOWMwNmRmZDQ5ZTAwMDAwMCIsImlhdCI6MTU3NDI0MzI2NywiZXhwIjoxNTc0MjU0MDY3fQ.kcaHD6m2seyKo27LeDHI-WpBAHl-c4awSIY3mEg2vQE",
+  "user": {
+    "id": "602ed20d9c06dfd49e000000",
+    "email": "frontend@ninja.com",
+    "name": "Frontend Ninja",
+    "avatar": "https://i.pravatar.cc/100",
+    "plan": "premium",
+    "totalApps": 100,
+    "totalDevices": 3920
+  }
+}
+```
 - [ ] Make sure to handle the errors and show them to the user.
-- [ ] Redirect the user to the main dashboard after login and make sure to display the user data you got from above.
-- [ ] User should see a top app bar that shows his info like name, avatar, etc...
-- [ ] User should see a list of Apps that you'll get via this endpoint `https://pushbots-fend-challenge.herokuapp.com/api/apps` but you'll need pagination params set before it works.
+- [ ] Redirect the user to the main dashboard after login and make sure to display the user data you got from the login request.  
+- [ ] User should see a top app bar that shows those info name, avatar and plan. 
+- [ ] User should see a list of Apps that you'll get via this endpoint GET `https://pushbots-fend-challenge.herokuapp.com/apps?take=5&skip=5&sortBy=name&direction=desc`. The response should include list of apps, each app should look like this: 
+
+```js
+{
+      "id": "ca95da5f-21f1-487d-8971-c6b2a10a1e44",
+      "title": "sincere late structure",
+      "icon": "https://picsum.photos/50/50",
+      "totalUsers": 5329,
+      "platforms": {
+        "ios": true,
+        "android": true,
+        "chrome": true,
+        "firefox": true,
+        "opera": true,
+        "safari": true
+      },
+      "chartData": [
+        {
+          "label": "2019-11-13",
+          "value": 249
+        },
+        {
+          "label": "2019-11-14",
+          "value": 351
+        },
+        {
+          "label": "2019-11-15",
+          "value": 973
+        },
+        {
+          "label": "2019-11-16",
+          "value": 180
+        },
+        {
+          "label": "2019-11-17",
+          "value": 666
+        },
+        {
+          "label": "2019-11-18",
+          "value": 845
+        },
+        {
+          "label": "2019-11-19",
+          "value": 455
+        },
+        {
+          "label": "2019-11-20",
+          "value": 717
+        }
+      ]
+    },
+```
 - [ ] User should be able to paginate this list via the provided endpoint.
-- [ ] Each app card should have a chart that shows engagement data for that app.
-- [ ] You can find the chart data in the App object.
+- [ ] Each app card should have a chart that shows engagement data for that app, found in the chart object in the previous response.
 - [ ] Each app should have some action buttons like the screen below but just make them dummy, only ui, not real actions.
 - [ ] Generally the dashboard design should look some what like the screen below.
-- Use email: `frontend@ninja.com` and password: `12345` for the login request.
-- You can paginate via query params `https://pushbots-fend-challenge.herokuapp.com/apps?take=5&skip=5&sortBy=name&direction=desc`.
+
+### Notes
+
 - README file should have clear instructions of how to run your project and any special instructions.
 - Don't violate any of ESlint rules.
 - Make sure your code is formatted with Prettier.
