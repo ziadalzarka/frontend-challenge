@@ -122,6 +122,13 @@ Please stick to the style rules and make sure your code is readable and pretty â
 
 You can find them here [Imgur](https://imgur.com/a/QggfTA7)
 
+### Assets
+##### These are not required but are provided in case you wanted to use them.
+Font: [Roboto](https://fonts.google.com/specimen/Roboto)
+Icons: [FontAwesome](https://fontawesome.com/icons) OR [Material Design Icons](https://materialdesignicons.com/)
+Colors: `#009688` as a primary color and you can just use any other color you see fit.
+
+
 ### Nice to have
 
 - Great attention to accessibility and its rules following WCAG 2.1
