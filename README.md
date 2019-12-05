@@ -1,7 +1,6 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/e346c9af012f48308019c58ea08983f1)](https://www.codacy.com/manual/zizohotot/frontend-challenge?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ziadalzarka/frontend-challenge&amp;utm_campaign=Badge_Grade)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/83897776-3c94-4daf-9169-dce296da2bc9/deploy-status)](https://app.netlify.com/sites/jolly-chandrasekhar-9f978b/deploys)
 
-
 # Front-end Engineer Challenge
 
 Welcome to PushBots interview process, here you'll be presented with a fairly simple challenge where you'll get to work with our stack and get a feel of how it is to work at PushBots.
@@ -134,7 +133,7 @@ You can find them here [Imgur](https://imgur.com/a/QggfTA7)
 
 ### Assets
 
-##### These are not required but are provided in case you wanted to use them.
+##### These are not required but are provided in case you wanted to use them
 
 -   Font: [Roboto](https://fonts.google.com/specimen/Roboto)
 -   Icons: [FontAwesome](https://fontawesome.com/icons) OR [Material Design Icons](https://materialdesignicons.com/)
