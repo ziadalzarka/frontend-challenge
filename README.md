@@ -1,4 +1,5 @@
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e346c9af012f48308019c58ea08983f1)](https://www.codacy.com/manual/zizohotot/frontend-challenge?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ziadalzarka/frontend-challenge&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e346c9af012f48308019c58ea08983f1)](https://www.codacy.com/manual/zizohotot/frontend-challenge?utm_source=github.com&utm_medium=referral&utm_content=ziadalzarka/frontend-challenge&utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Coverage/e346c9af012f48308019c58ea08983f1)](https://www.codacy.com/manual/zizohotot/frontend-challenge?utm_source=github.com&utm_medium=referral&utm_content=ziadalzarka/frontend-challenge&utm_campaign=Badge_Coverage)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/83897776-3c94-4daf-9169-dce296da2bc9/deploy-status)](https://app.netlify.com/sites/jolly-chandrasekhar-9f978b/deploys)
 
 # Front-end Engineer Challenge
