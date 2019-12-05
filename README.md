@@ -133,7 +133,7 @@ You can find them here [Imgur](https://imgur.com/a/QggfTA7)
 
 ### Assets
 
-##### These are not required but are provided in case you wanted to use them
+**These are not required but are provided in case you wanted to use them**
 
 -   Font: [Roboto](https://fonts.google.com/specimen/Roboto)
 -   Icons: [FontAwesome](https://fontawesome.com/icons) OR [Material Design Icons](https://materialdesignicons.com/)
