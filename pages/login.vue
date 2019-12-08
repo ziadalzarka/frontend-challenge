@@ -1,11 +1,11 @@
 <template>
   <div>
     <v-alert v-show="error" type="error">
-      Email and password do not match
+      {{ $t('login.errors.unauthorized') }}
     </v-alert>
-    <h1 class="title mb-4">Log into your account</h1>
+    <h1 class="title mb-4" :dir="$t('dir')">{{ $t('login.title') }}</h1>
     <ValidationObserver v-slot="{ handleSubmit }">
-      <form @submit.prevent="handleSubmit(onSubmit)">
+      <form @submit.prevent="handleSubmit(onSubmit)" :dir="$t('dir')">
         <ValidationProvider
           v-slot="{ errors }"
           name="email"
@@ -13,8 +13,8 @@
         >
           <v-text-field
             v-model="user.email"
-            prepend-icon="mdi-email"
-            label="Email"
+            prepend-inner-icon="mdi-email"
+            :label="$t('login.email')"
             :error-messages="errors[0]"
             required
           ></v-text-field>
@@ -26,17 +26,17 @@
         >
           <v-text-field
             v-model="user.password"
-            prepend-icon="mdi-lock"
+            prepend-inner-icon="mdi-lock"
             type="password"
-            label="Password"
+            :label="$t('login.password')"
             :error-messages="errors[0]"
             required
           ></v-text-field>
         </ValidationProvider>
         <div class="mt-5">
-          <a href="#">Forgot your password?</a>
+          <a href="#">{{ $t('login.forgot-password') }}</a>
           <br />
-          <a href="#">Don't have an account?</a>
+          <a href="#">{{ $t('login.no-account') }}</a>
         </div>
         <div class="mt-5">
           <v-btn
@@ -45,7 +45,7 @@
             type="submit"
             :loading="loading"
             :disabled="loading"
-            >Log In</v-btn
+            >{{ $t('login.login') }}</v-btn
           >
         </div>
       </form>
@@ -55,13 +55,13 @@
         <v-flex xs12 md6>
           <v-btn block color="#DB2A2F" dark class="google-button">
             <v-icon left>mdi-google</v-icon>
-            Google
+            {{ $t('login.google') }}
           </v-btn>
         </v-flex>
         <v-flex xs12 md6>
           <v-btn block color="black" dark class="github-button">
             <v-icon left>mdi-github-circle</v-icon>
-            GitHub
+            {{ $t('login.github') }}
           </v-btn>
         </v-flex>
       </v-layout>

@@ -31,15 +31,14 @@ export default {
    ** Router custom configuration
    */
   router: {
-    middleware: ['i18n', 'auth']
+    middleware: ['auth']
   },
   /*
    ** Plugins to load before mounting the App
    */
   plugins: [
     { src: '~/plugins/axe', ssr: false },
-    { src: '~/plugins/vee-validate', ssr: true },
-    '~/plugins/i18n'
+    { src: '~/plugins/vee-validate', ssr: true }
   ],
   /*
    ** Nuxt.js dev-modules
@@ -56,7 +55,8 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/auth',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    'nuxt-i18n'
   ],
   /*
    ** Axios module configuration
@@ -110,6 +110,24 @@ export default {
     icons: {
       iconfront: 'md'
     }
+  },
+  /*
+   ** i18n
+   */
+  i18n: {
+    defaultLocale: 'en',
+    locales: [
+      {
+        code: 'en',
+        file: 'en.js'
+      },
+      {
+        code: 'ar',
+        file: 'ar.js'
+      }
+    ],
+    lazy: true,
+    langDir: 'locales/'
   },
   /*
    ** Build configuration
