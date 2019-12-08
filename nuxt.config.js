@@ -22,25 +22,23 @@ export default {
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: '#fff' },
+  loading: { color: colors.teal.base },
   /*
    ** Global CSS
    */
-  css: [],
+  css: ['~/global.css'],
   /*
    ** Router custom configuration
    */
   router: {
-    middleware: 'i18n'
+    middleware: ['i18n', 'auth']
   },
   /*
    ** Plugins to load before mounting the App
    */
   plugins: [
-    {
-      src: '~/plugins/axe',
-      ssr: false
-    },
+    { src: '~/plugins/axe', ssr: false },
+    { src: '~/plugins/vee-validate', ssr: true },
     '~/plugins/i18n'
   ],
   /*
@@ -57,13 +55,45 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '@nuxtjs/auth',
     '@nuxtjs/pwa'
   ],
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    baseUrl: 'https://pushbots-fend-challenge.herokuapp.com'
+  },
+  /*
+   ** Authorization module configuration
+   */
+  auth: {
+    rewriteRedirects: true,
+    watchLoggedIn: true,
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            url: 'https://pushbots-fend-challenge.herokuapp.com/login',
+            method: 'post',
+            propertyName: 'token'
+          },
+          user: {
+            url: 'https://pushbots-fend-challenge.herokuapp.com/api/me',
+            method: 'get',
+            propertyName: false
+          },
+          logout: false
+        }
+      }
+    },
+    redirect: {
+      login: '/login',
+      logout: '/login',
+      home: '/'
+    }
+  },
   /*
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module
@@ -76,15 +106,25 @@ export default {
           primary: colors.teal.base
         }
       }
+    },
+    icons: {
+      iconfront: 'md'
     }
   },
   /*
    ** Build configuration
    */
   build: {
+    vendor: ['vee-validate'],
     /*
      ** You can extend webpack config here
      */
     extend(config, ctx) {}
+  },
+  /*
+   ** Environment variables
+   */
+  env: {
+    WCAG: process.env.WCAG || false
   }
 }
