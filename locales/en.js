@@ -1,7 +1,18 @@
 export default {
-  dir: 'ltr',
   dashboard: {
-    search: 'Search your apps'
+    search: 'Search your apps',
+    toolbar: {
+      complete: 'Complete',
+      'in-setup': 'In Setup',
+      shared: 'Shared',
+      active: 'Active',
+      'new-integration': 'New Integration'
+    },
+    app: {
+      users: 'users',
+      'daily-active-users': 'Daily active users'
+    },
+    logout: 'Log Out'
   },
   login: {
     title: 'Log into your account',

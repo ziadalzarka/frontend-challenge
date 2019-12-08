@@ -19,7 +19,7 @@ export default ({ app, store }) => {
   })
 
   // Set current locale from store
-  VeeValidate.localize(store.state.locale)
+  VeeValidate.localize('en')
 
   // Install ValidationProvider component
   Vue.component('ValidationObserver', VeeValidate.ValidationObserver)

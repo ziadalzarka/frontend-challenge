@@ -3,9 +3,9 @@
     <v-alert v-show="error" type="error">
       {{ $t('login.errors.unauthorized') }}
     </v-alert>
-    <h1 class="title mb-4" :dir="$t('dir')">{{ $t('login.title') }}</h1>
+    <h1 class="title mb-4">{{ $t('login.title') }}</h1>
     <ValidationObserver v-slot="{ handleSubmit }">
-      <form @submit.prevent="handleSubmit(onSubmit)" :dir="$t('dir')">
+      <form @submit.prevent="handleSubmit(onSubmit)">
         <ValidationProvider
           v-slot="{ errors }"
           name="email"
@@ -66,13 +66,16 @@
         </v-flex>
       </v-layout>
     </div>
+    <LanguageSwitcher class="mt-5"></LanguageSwitcher>
   </div>
 </template>
 
 <script>
+import LanguageSwitcher from '~/components/LanguageSwitcher'
+
 export default {
   layout: 'form',
-
+  components: { LanguageSwitcher },
   data: () => {
     return {
       user: {

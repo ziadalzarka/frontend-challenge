@@ -12,3 +12,11 @@ body,
 body * {
   font-family: 'Roboto', sans-serif;
 }
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.pointer {
+  cursor: pointer;
+}

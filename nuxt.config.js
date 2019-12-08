@@ -1,4 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
+import locales from './locales'
 
 export default {
   mode: 'universal',
@@ -38,7 +39,9 @@ export default {
    */
   plugins: [
     { src: '~/plugins/axe', ssr: false },
-    { src: '~/plugins/vee-validate', ssr: true }
+    { src: '~/plugins/vee-validate', ssr: true },
+    '~/plugins/i18n',
+    '~/plugins/infinite-scroll'
   ],
   /*
    ** Nuxt.js dev-modules
@@ -63,7 +66,9 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    baseUrl: 'https://pushbots-fend-challenge.herokuapp.com'
+    baseUrl: 'http://pushbots-fend-challenge.herokuapp.com',
+    browserBaseURL: 'http://pushbots-fend-challenge.herokuapp.com',
+    https: true
   },
   /*
    ** Authorization module configuration
@@ -92,6 +97,9 @@ export default {
       login: '/login',
       logout: '/login',
       home: '/'
+    },
+    token: {
+      // prefix: '$'
     }
   },
   /*
@@ -116,16 +124,7 @@ export default {
    */
   i18n: {
     defaultLocale: 'en',
-    locales: [
-      {
-        code: 'en',
-        file: 'en.js'
-      },
-      {
-        code: 'ar',
-        file: 'ar.js'
-      }
-    ],
+    locales,
     lazy: true,
     langDir: 'locales/'
   },
@@ -143,6 +142,7 @@ export default {
    ** Environment variables
    */
   env: {
+    // API_URL: 'http://pushbots-fend-challenge.herokuapp.com',
     WCAG: process.env.WCAG || false
   }
 }

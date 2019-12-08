@@ -1,12 +1,14 @@
 export const state = () => ({
-  locales: ['en', 'ar'],
   locale: 'en'
 })
 
 export const mutations = {
-  SET_LANG(state, locale) {
-    if (state.locales.includes(locale)) {
-      state.locale = locale
-    }
+  SET_LOCALE: (state, locale) => (state.locale = locale)
+}
+
+export const actions = {
+  setLocale({ commit }, locale, rootState) {
+    this.$i18n.setLocale(locale)
+    commit('SET_LOCALE', locale)
   }
 }
