@@ -2,22 +2,30 @@
   <v-container>
     <v-row justify="space-between">
       <v-col cols="auto">
-        <v-btn text color="primary">
-          <v-icon left>mdi-check</v-icon>
-          {{ $t('dashboard.toolbar.complete') }}
-        </v-btn>
-        <v-btn text color="primary">
-          <v-icon left>mdi-settings</v-icon>
-          {{ $t('dashboard.toolbar.in-setup') }}
-        </v-btn>
-        <v-btn text color="primary">
-          <v-icon left>mdi-share</v-icon>
-          {{ $t('dashboard.toolbar.shared') }}
-        </v-btn>
-        <v-btn text color="primary">
-          <v-icon left>mdi-chart-line</v-icon>
-          {{ $t('dashboard.toolbar.active') }}
-        </v-btn>
+        <v-btn-toggle
+          v-model="activeBtn"
+          color="teal"
+          tile
+          group
+          class="flex-wrap"
+        >
+          <v-btn value="complete">
+            <v-icon left>mdi-check</v-icon>
+            {{ $t('dashboard.toolbar.complete') }}
+          </v-btn>
+          <v-btn value="in-setup">
+            <v-icon left>mdi-settings</v-icon>
+            {{ $t('dashboard.toolbar.in-setup') }}
+          </v-btn>
+          <v-btn value="shared">
+            <v-icon left>mdi-share</v-icon>
+            {{ $t('dashboard.toolbar.shared') }}
+          </v-btn>
+          <v-btn value="active">
+            <v-icon left>mdi-chart-line</v-icon>
+            {{ $t('dashboard.toolbar.active') }}
+          </v-btn>
+        </v-btn-toggle>
       </v-col>
       <v-col cols="auto">
         <v-btn color="primary">
@@ -27,23 +35,21 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-col xs="12" md="8">
-        <v-row>
-          <!-- :key="app.id" v-for="app in apps" -->
-          <v-col xs="12" md="6">
-            <AppCard></AppCard>
-          </v-col>
-          <v-col xs="12" md="6">card</v-col>
-          <v-col xs="12" md="6">card</v-col>
-          <v-col xs="12" md="6">card</v-col>
-        </v-row>
+      <v-col v-for="(app, index) in apps" :key="index" sm="12" md="6" lg="4">
+        <AppCard :app="app"></AppCard>
       </v-col>
-      <v-col xs="12" md="4">list </v-col>
     </v-row>
+    <div class="text-center" :class="{ invisible: !loading }">
+      <v-progress-circular
+        :indeterminate="true"
+        color="primary"
+      ></v-progress-circular>
+    </div>
   </v-container>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import AppCard from '~/components/AppCard'
 
 export default {
@@ -51,23 +57,17 @@ export default {
   layout: 'dashboard',
   components: { AppCard },
   data: () => {
-    return { apps: [] }
+    return { activeBtn: 'active' }
   },
+  computed: mapState('apps', ['apps', 'loading', 'error']),
   mounted() {
-    // this.loadMore()
+    this.loadMore()
+    this.onLoadMore(() => this.loadMore())
   },
   methods: {
     loadMore() {
-      this.$axios
-        .$get('api/apps', {
-          params: {
-            take: 5,
-            skip: this.apps.length,
-            sortBy: 'title',
-            direction: 'desc'
-          }
-        })
-        .then(({ data }) => (this.apps = [...this.apps, ...data]))
+      console.log('called')
+      this.$store.dispatch('apps/loadMore')
     }
   }
 }

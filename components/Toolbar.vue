@@ -5,6 +5,7 @@
     <Logo small class="mr-4 ml-2"></Logo>
 
     <v-text-field
+      :style="{ ...(!$vuetify.breakpoint.lg && { width: '100%' }) }"
       prepend-inner-icon="mdi-magnify"
       type="text"
       :label="$t('dashboard.search')"
@@ -17,19 +18,19 @@
 
     <v-spacer></v-spacer>
 
-    <div>
+    <div v-hide-on-mobile>
       <v-icon>mdi-account-group</v-icon>
       <span>{{ user.totalDevices }}</span>
     </div>
 
-    <div class="ma-4">
+    <div v-hide-on-mobile class="ma-4">
       <v-icon>mdi-apps</v-icon>
       <span>{{ user.totalApps }}</span>
     </div>
 
-    <LanguageSwitcher style="width: 15%"></LanguageSwitcher>
+    <LanguageSwitcher v-hide-on-mobile style="width: 15%"></LanguageSwitcher>
 
-    <div class="ma-4">
+    <div v-hide-on-mobile class="ma-4">
       <v-layout column>
         <v-flex>
           {{ user.name }}
@@ -45,13 +46,13 @@
       </v-layout>
     </div>
 
-    <v-avatar class="mr-2" color="grey">
+    <v-avatar v-hide-on-mobile class="mr-2" color="grey">
       <img :src="user.avatar" :alt="user.name" />
     </v-avatar>
 
-    <v-menu bottom left>
+    <v-menu v-hide-on-mobile bottom left>
       <template v-slot:activator="{ on }">
-        <v-btn dark icon v-on="on">
+        <v-btn v-hide-on-mobile dark icon v-on="on">
           <v-icon>mdi-dots-vertical</v-icon>
         </v-btn>
       </template>

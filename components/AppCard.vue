@@ -1,27 +1,35 @@
 <template>
   <v-card>
     <v-card-text>
-      <span class="title black--text">
-        spa
-      </span>
-      <br />
-      <span class="subtitle-2">
-        <v-icon small>mdi-cellphone-android</v-icon>
-        45 {{ $t('dashboard.app.users') }}
-      </span>
-      <span class="subtitle-2 ml-2">
-        <AppPlatforms :platforms="{ ios: true }"></AppPlatforms>
-      </span>
+      <v-layout>
+        <v-flex class="flex-grow-0">
+          <v-avatar tile color="blue">
+            <!-- add ?v=... because the placeholder image gets cached and all the cards are the same image -->
+            <img :src="`${app.icon}?=${app.id}`" />
+          </v-avatar>
+        </v-flex>
+        <v-flex class="pl-2">
+          <span class="body-1 black--text">
+            {{ app.title }}
+          </span>
+          <br />
+          <span class="subtitle-2">
+            <v-icon small>mdi-cellphone-android</v-icon>
+            {{ app.totalUsers }} {{ $t('dashboard.app.users') }}
+            <AppPlatforms :platforms="app.platforms"></AppPlatforms>
+          </span>
+        </v-flex>
+        <v-flex class="d-flex flex-grow-0">
+          <v-btn icon>
+            <v-icon>mdi-share</v-icon>
+          </v-btn>
+          <v-btn icon>
+            <v-icon>mdi-dots-vertical</v-icon>
+          </v-btn>
+        </v-flex>
+      </v-layout>
     </v-card-text>
-    <AppChart
-      :chart-data="[
-        { value: 7 },
-        { value: 16 },
-        { value: 12 },
-        { value: 2 },
-        { value: 4 }
-      ]"
-    ></AppChart>
+    <AppChart :chart-data="app.chartData"></AppChart>
     <v-card-actions>
       <v-btn text icon>
         <v-icon>mdi-send</v-icon>
@@ -51,6 +59,9 @@ import AppPlatforms from '~/components/AppPlatforms'
 
 export default {
   name: 'AppCard',
-  components: { AppChart, AppPlatforms }
+  components: { AppChart, AppPlatforms },
+  props: {
+    app: { type: Object, default: () => {} }
+  }
 }
 </script>

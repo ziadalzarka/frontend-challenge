@@ -1,15 +1,17 @@
 <template>
-  <v-select
-    v-model="locale"
-    :items="locales"
-    class="flex-grow-0"
-    label="Language"
-    item-value="code"
-    item-text="label"
-    outlined
-    hide-details
-    dense
-  ></v-select>
+  <div>
+    <v-select
+      v-model="locale"
+      :items="locales"
+      class="flex-grow-0"
+      label="Language"
+      item-value="code"
+      item-text="label"
+      outlined
+      hide-details
+      dense
+    ></v-select>
+  </div>
 </template>
 
 <script>

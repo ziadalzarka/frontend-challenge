@@ -41,6 +41,7 @@ export default {
     { src: '~/plugins/axe', ssr: false },
     { src: '~/plugins/vee-validate', ssr: true },
     '~/plugins/i18n',
+    '~/plugins/responsive',
     '~/plugins/infinite-scroll'
   ],
   /*
@@ -132,7 +133,6 @@ export default {
    ** Build configuration
    */
   build: {
-    vendor: ['vee-validate'],
     /*
      ** You can extend webpack config here
      */

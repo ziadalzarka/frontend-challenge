@@ -1,8 +1,19 @@
 export default {
+  language: 'La langue',
   dashboard: {
     search: 'Recherchez vos applications',
-    'new-integration': 'Nouvelle intégration',
-    logout: 'Log Out'
+    toolbar: {
+      complete: 'Achevé',
+      'in-setup': 'En configuration',
+      shared: 'Partagé',
+      active: 'Actif',
+      'new-integration': 'Nouvelle intégration'
+    },
+    app: {
+      users: 'utilisateurs',
+      'daily-active-users': 'Utilisateurs actifs quotidiens'
+    },
+    logout: 'Déconnexion'
   },
   login: {
     title: 'Connectez-vous à votre compte',

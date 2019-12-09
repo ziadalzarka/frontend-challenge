@@ -1,5 +1,23 @@
 import Vue from 'vue'
-import InfiniteScroll from 'v-infinite-scroll'
-import 'v-infinite-scroll/dist/v-infinite-scroll.css'
 
-Vue.use(InfiniteScroll)
+let disabled = false
+const listeners = []
+
+if (!process.server) {
+  window.onscroll = () => {
+    const difference =
+      document.body.scrollHeight - (window.scrollY + window.innerHeight)
+    if (difference <= 20) {
+      if (!disabled) {
+        disabled = true
+        listeners.map((listener) => listener())
+      }
+    } else {
+      disabled = false
+    }
+  }
+}
+
+Vue.prototype.onLoadMore = (callback) => {
+  listeners.push(callback)
+}

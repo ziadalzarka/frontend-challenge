@@ -1,4 +1,5 @@
 export default {
+  language: 'Language',
   dashboard: {
     search: 'Search your apps',
     toolbar: {
