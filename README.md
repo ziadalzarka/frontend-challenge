@@ -121,7 +121,7 @@ Please stick to the style rules and make sure your code is readable and pretty â
 
 ### Notes
 
--   [ ] README file should have clear instructions of how to run your project and any special instructions.
+-   [x] README file should have clear instructions of how to run your project and any special instructions.
 -   [x] Don't violate any of ESlint rules.
 -   [x] Make sure your code is formatted with Prettier.
 -   [x] Make sure you're using Vuex for state management.
@@ -142,7 +142,7 @@ You can find them here [Imgur](https://imgur.com/a/QggfTA7)
 
 ### Nice to have
 
--   [ ] Great attention to accessibility and its rules following WCAG 2.1
+-   [x] Great attention to accessibility and its rules following WCAG 2.1
 -   [ ] Unit testing with Jest (Kudos if you integrate it in your pipeline with Netlify).
 -   [x] [Netlify](https://netlify.com/) integration for your project and add its badge to the README.
 -   [x] Code quality checks like [Codacy](https://www.codacy.com/) and add its badge to the README.
@@ -177,3 +177,21 @@ $ yarn generate
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+
+### Running Tests
+
+-   [x] Tests have been integrated with Netlify pipeline
+
+```bash
+# run linter
+yarn lint
+
+# run tests
+yarn test
+
+# run tests in watch mode
+yarn test:dev
+
+# serve in accessibility rules testing mode with vue-axe
+yarn test:wcag
+```

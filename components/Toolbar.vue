@@ -5,7 +5,6 @@
     <Logo small class="mr-4 ml-2"></Logo>
 
     <v-text-field
-      :style="{ ...(!$vuetify.breakpoint.lg && { width: '100%' }) }"
       prepend-inner-icon="mdi-magnify"
       type="text"
       :label="$t('dashboard.search')"
@@ -16,7 +15,7 @@
       dense
     ></v-text-field>
 
-    <v-spacer></v-spacer>
+    <v-spacer v-hide-on-mobile></v-spacer>
 
     <div v-hide-on-mobile>
       <v-icon>mdi-account-group</v-icon>
@@ -50,7 +49,7 @@
       <img :src="user.avatar" :alt="user.name" />
     </v-avatar>
 
-    <v-menu v-hide-on-mobile bottom left>
+    <v-menu v-hide-on-mobile bottom left id="menu">
       <template v-slot:activator="{ on }">
         <v-btn v-hide-on-mobile dark icon v-on="on">
           <v-icon>mdi-dots-vertical</v-icon>
@@ -59,7 +58,7 @@
 
       <v-list>
         <v-list-item class="pointer">
-          <v-list-item-title @click="logout">{{
+          <v-list-item-title @click="logout" id="logout-menu-item">{{
             $t('dashboard.logout')
           }}</v-list-item-title>
         </v-list-item>

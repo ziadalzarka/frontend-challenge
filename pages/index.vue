@@ -66,7 +66,6 @@ export default {
   },
   methods: {
     loadMore() {
-      console.log('called')
       this.$store.dispatch('apps/loadMore')
     }
   }
