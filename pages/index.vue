@@ -61,13 +61,8 @@ export default {
   },
   computed: mapState('apps', ['apps', 'loading', 'error']),
   mounted() {
-    this.loadMore()
-    this.onLoadMore(() => this.loadMore())
-  },
-  methods: {
-    loadMore() {
-      this.$store.dispatch('apps/loadMore')
-    }
+    this.$store.dispatch('apps/fetchApps')
+    this.onLoadMore(() => this.$store.dispatch('apps/loadMore'))
   }
 }
 </script>

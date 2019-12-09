@@ -2,12 +2,14 @@ import { asyncStore } from '@/util/async-store'
 
 export const namespaced = true
 
-export const state = () => ({
+const initialState = {
   apps: [],
   loading: false,
   error: false,
   total: null
-})
+}
+
+export const state = () => initialState
 
 export const mutations = {
   APPEND_APPS(state, apps) {
@@ -16,10 +18,17 @@ export const mutations = {
   UPDATE_TOTAL(state, total) {
     state.total = total
   },
+  RESET(state) {
+    Object.assign(state, initialState)
+  },
   ...asyncStore
 }
 
 export const actions = {
+  fetchApps({ commit, dispatch }) {
+    commit('RESET')
+    dispatch('loadMore')
+  },
   loadMore({ state, commit }) {
     if (!state.total || (state.total && state.total > state.apps.length)) {
       commit('SET_LOADING', true)
