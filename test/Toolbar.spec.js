@@ -14,15 +14,16 @@ describe('Toolbar', () => {
   let store
   let state
   let vuetify
-  const mocks = {
-    $t: jest.fn(),
-    $auth: {
-      logout: jest.fn()
-    }
-  }
+  let mocks
 
   beforeEach(() => {
     vuetify = new Vuetify()
+    mocks = {
+      $t: jest.fn(),
+      $auth: {
+        logout: jest.fn()
+      }
+    }
     state = {
       user: {
         id: '602ed20d9c06dfd49e000000',

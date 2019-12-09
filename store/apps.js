@@ -1,3 +1,5 @@
+import { asyncStore } from '@/util/async-store'
+
 export const namespaced = true
 
 export const state = () => ({
@@ -14,18 +16,7 @@ export const mutations = {
   UPDATE_TOTAL(state, total) {
     state.total = total
   },
-  SET_LOADING(state, loading) {
-    state.loading = loading
-    if (loading) {
-      state.error = false
-    }
-  },
-  SET_ERROR(state, error) {
-    state.error = error
-    if (error) {
-      state.loading = false
-    }
-  }
+  ...asyncStore
 }
 
 export const actions = {

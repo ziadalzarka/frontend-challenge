@@ -5,7 +5,7 @@
     </v-alert>
     <h1 class="title mb-4">{{ $t('login.title') }}</h1>
     <ValidationObserver v-slot="{ handleSubmit }">
-      <form @submit.prevent="handleSubmit(onSubmit)">
+      <form id="userForm" @submit.prevent="handleSubmit(onSubmit)">
         <ValidationProvider
           v-slot="{ errors }"
           name="email"
@@ -13,6 +13,8 @@
         >
           <v-text-field
             v-model="user.email"
+            type="email"
+            autocomplete="username"
             prepend-inner-icon="mdi-email"
             :label="$t('login.email')"
             :error-messages="errors[0]"
@@ -26,8 +28,9 @@
         >
           <v-text-field
             v-model="user.password"
-            prepend-inner-icon="mdi-lock"
             type="password"
+            autocomplete="current-password"
+            prepend-inner-icon="mdi-lock"
             :label="$t('login.password')"
             :error-messages="errors[0]"
             required
@@ -71,6 +74,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import LanguageSwitcher from '~/components/LanguageSwitcher'
 
 export default {
@@ -81,19 +85,13 @@ export default {
       user: {
         email: '',
         password: ''
-      },
-      error: false,
-      loading: false
+      }
     }
   },
-
+  computed: mapState('login', ['loading', 'error']),
   methods: {
     onSubmit() {
-      this.loading = true
-      this.$auth
-        .loginWith('local', { data: this.user })
-        .catch(() => (this.error = true))
-        .then(() => (this.loading = false))
+      this.$store.dispatch('login/logIn', this.user)
     }
   },
 

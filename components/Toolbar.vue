@@ -49,7 +49,7 @@
       <img :src="user.avatar" :alt="user.name" />
     </v-avatar>
 
-    <v-menu v-hide-on-mobile bottom left id="menu">
+    <v-menu id="menu" v-hide-on-mobile bottom left>
       <template v-slot:activator="{ on }">
         <v-btn v-hide-on-mobile dark icon v-on="on">
           <v-icon>mdi-dots-vertical</v-icon>
@@ -58,7 +58,7 @@
 
       <v-list>
         <v-list-item class="pointer">
-          <v-list-item-title @click="logout" id="logout-menu-item">{{
+          <v-list-item-title id="logout-menu-item" @click="logout">{{
             $t('dashboard.logout')
           }}</v-list-item-title>
         </v-list-item>
