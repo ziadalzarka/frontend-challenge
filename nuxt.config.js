@@ -38,7 +38,7 @@ export default {
    ** Plugins to load before mounting the App
    */
   plugins: [
-    ...(process.env.NODE_ENV === 'production' ? ['~/plugins/axe'] : []),
+    ...(process.env.NODE_ENV !== 'production' ? ['~/plugins/axe'] : []),
     '~/plugins/vee-validate',
     '~/plugins/i18n',
     '~/plugins/responsive',
