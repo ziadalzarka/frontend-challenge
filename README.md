@@ -4,6 +4,8 @@
 
 # Front-end Engineer Challenge
 
+**THIS README FILE HAS BEEN EDITED SCROLL DOWN FOR INSTRUCTIONS ON UNIT TESTS AND ACCESSIBILITY TESTS**
+
 Welcome to PushBots interview process, here you'll be presented with a fairly simple challenge where you'll get to work with our stack and get a feel of how it is to work at PushBots.
 
 ## About PushBots
