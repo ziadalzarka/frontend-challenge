@@ -38,8 +38,8 @@ export default {
    ** Plugins to load before mounting the App
    */
   plugins: [
-    { src: '~/plugins/axe', ssr: false },
-    { src: '~/plugins/vee-validate', ssr: true },
+    ...(process.env.NODE_ENV === 'production' ? ['~/plugins/axe'] : []),
+    '~/plugins/vee-validate',
     '~/plugins/i18n',
     '~/plugins/responsive',
     '~/plugins/infinite-scroll'
@@ -98,9 +98,6 @@ export default {
       login: '/login',
       logout: '/login',
       home: '/'
-    },
-    token: {
-      // prefix: '$'
     }
   },
   /*
@@ -142,7 +139,6 @@ export default {
    ** Environment variables
    */
   env: {
-    // API_URL: 'http://pushbots-fend-challenge.herokuapp.com',
     WCAG: process.env.WCAG || false
   }
 }

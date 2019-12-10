@@ -197,3 +197,9 @@ yarn test:dev
 # serve in accessibility rules testing mode with vue-axe
 yarn test:wcag
 ```
+
+You can also run accessiblity tests while in the development mode by calling:
+
+```javascript
+enableAxe()
+```
