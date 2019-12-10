@@ -13,6 +13,7 @@ export default {
       users: 'users',
       'daily-active-users': 'Daily active users'
     },
+    error: 'Failed to fetch apps',
     logout: 'Log Out'
   },
   login: {

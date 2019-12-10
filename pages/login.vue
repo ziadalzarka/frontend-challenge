@@ -79,6 +79,7 @@ import LanguageSwitcher from '~/components/LanguageSwitcher'
 
 export default {
   layout: 'form',
+  name: 'LoginPage',
   components: { LanguageSwitcher },
   data: () => {
     return {

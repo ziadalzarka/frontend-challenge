@@ -45,6 +45,9 @@
         color="primary"
       ></v-progress-circular>
     </div>
+    <v-snackbar v-model="error" color="danger">
+      {{ $t('dashboard.error') }}
+    </v-snackbar>
   </v-container>
 </template>
 
@@ -55,11 +58,20 @@ import AppCard from '~/components/AppCard'
 export default {
   middleware: 'auth',
   layout: 'dashboard',
+  name: 'DashboardPage',
   components: { AppCard },
   data: () => {
     return { activeBtn: 'active' }
   },
-  computed: mapState('apps', ['apps', 'loading', 'error']),
+  computed: {
+    ...mapState('apps', ['apps', 'loading']),
+    error: {
+      set() {},
+      get() {
+        return this.$store.state.apps.error
+      }
+    }
+  },
   mounted() {
     this.$store.dispatch('apps/fetchApps')
     this.onLoadMore(() => this.$store.dispatch('apps/loadMore'))

@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import Vuetify from 'vuetify'
 import { createLocalVue, mount } from '@vue/test-utils'
-import '@/plugins/infinite-scroll'
 import DashboardPage from '@/pages/index.vue'
 
 Vue.use(Vuetify)
@@ -11,11 +10,18 @@ localVue.use(Vuex)
 localVue.use(Vuetify)
 
 describe('DashboardPage', () => {
+  const listeners = []
   let store
   let state
   let vuetify
   let mocks
   let actions
+
+  beforeAll(() => {
+    Vue.prototype.onLoadMore = (callback) => {
+      listeners.push(callback)
+    }
+  })
 
   beforeEach(() => {
     vuetify = new Vuetify()
@@ -25,7 +31,8 @@ describe('DashboardPage', () => {
       error: false
     }
     actions = {
-      loadMore: jest.fn()
+      loadMore: jest.fn(),
+      fetchApps: jest.fn()
     }
     store = new Vuex.Store({
       modules: {
@@ -53,5 +60,22 @@ describe('DashboardPage', () => {
   it('renders', () => {
     const wrapper = factory()
     expect(wrapper.isVueInstance()).toBeTruthy()
+  })
+
+  it('loads first patch on mount', () => {
+    factory()
+    expect(actions.fetchApps).toHaveBeenCalled()
+  })
+
+  it('loads more on scroll', () => {
+    factory()
+    listeners.map((listener) => listener())
+    expect(actions.loadMore).toHaveBeenCalled()
+  })
+
+  it('renders error', () => {
+    const wrapper = factory()
+    state.error = true
+    expect(wrapper.text()).toContain('dashboard.error')
   })
 })

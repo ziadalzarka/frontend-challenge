@@ -2,7 +2,7 @@ import { asyncStore } from '@/util/async-store'
 
 export const namespaced = true
 
-const initialState = {
+export const initialState = {
   apps: [],
   loading: false,
   error: false,
@@ -30,7 +30,7 @@ export const actions = {
     dispatch('loadMore')
   },
   loadMore({ state, commit }) {
-    if (!state.total || (state.total && state.total > state.apps.length)) {
+    if (!state.total || state.total > state.apps.length) {
       commit('SET_LOADING', true)
       this.$axios
         .$get('api/apps', {

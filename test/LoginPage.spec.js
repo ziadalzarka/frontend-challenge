@@ -82,22 +82,42 @@ describe('AppCard', () => {
     expect(wrapper.vm.error).toBeFalse()
   })
 
-  it('cancels login when email is invalid', async () => {
+  it('shows email error messages and cancels login', async () => {
     const wrapper = factory()
-    const user = { email: 'email', password: '12345' }
-    wrapper.setData({ user })
+    // try invalid email
+    wrapper.setData({ user: { email: 'email', password: '12345' } })
     wrapper.find('form#userForm').trigger('submit')
     await flushPromises()
+    // assert
     expect(actions.logIn).not.toHaveBeenCalled()
+    expect(wrapper.text()).toContain('The email field must be a valid email')
+    // try empty email
+    wrapper.setData({ user: { email: '', password: '12345' } })
+    wrapper.find('form#userForm').trigger('submit')
+    await flushPromises()
+    // assert
+    expect(actions.logIn).not.toHaveBeenCalled()
+    expect(wrapper.text()).toContain('The email field is required')
   })
 
-  it('cancels login when password is invalid', async () => {
+  it('shows password error messages and cancels login', async () => {
     const wrapper = factory()
-    const user = { email: 'frontend@ninja.com', password: '1234' }
-    wrapper.setData({ user })
+    // try invalid password
+    wrapper.setData({ user: { email: 'frontend@ninja.com', password: '1234' } })
     wrapper.find('form#userForm').trigger('submit')
     await flushPromises()
+    // assert
     expect(actions.logIn).not.toHaveBeenCalled()
+    expect(wrapper.text()).toContain(
+      'Password must not be less than 5 characters long'
+    )
+    // try empty password
+    wrapper.setData({ user: { email: 'frontend@ninja.com', password: '' } })
+    wrapper.find('form#userForm').trigger('submit')
+    await flushPromises()
+    // assert
+    expect(actions.logIn).not.toHaveBeenCalled()
+    expect(wrapper.text()).toContain('The password field is required')
   })
 
   it('should fail to log in', async () => {
